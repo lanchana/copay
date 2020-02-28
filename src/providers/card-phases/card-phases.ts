@@ -138,16 +138,12 @@ export class CardPhasesProvider {
     'UY',
     'VG'
   ];
-  constructor(private http: HttpClient) {}
-  public getSession() {
-    const url = 'https://bitpay.com/visa-api/session';
-    return this.http.get(url);
-  }
+  constructor(private http: HttpClient) { }
 
-  public notify(csrfToken, body) {
-    const url = 'https://bitpay.com/visa-api/interested';
+  public notify(body) {
+    const url = 'https://bitpay.com/api/v2';
     let httpHeaders = new HttpHeaders();
-    httpHeaders = httpHeaders.set('x-csrf-token', csrfToken);
+    httpHeaders = httpHeaders.set('Content-Type', 'application/json; charset=utf-8');
     const options = {
       headers: httpHeaders
     };
